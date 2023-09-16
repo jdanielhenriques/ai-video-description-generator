@@ -12,8 +12,15 @@ import {
 } from "./components/ui/select";
 import { Slider } from "./components/ui/slider";
 import { VideoInputForm } from "./components/video-input-form";
+import { PromptSelect } from "./components/PromptSelect";
 
 export function App() {
+
+function handlePromptSelect(template: string) {
+  console.log(template);
+}
+
+
   return (
     <div className="min-h-screen flex flex-col">
       <div className="px-6 py-3 flex items-center justify-between border-b">
@@ -58,17 +65,7 @@ export function App() {
           <form className="space-y-6">
             <div className="space-y-4">
               <Label>Prompt</Label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select a prompt" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="title">YouTube title</SelectItem>
-                  <SelectItem value="description">
-                    YouTube description
-                  </SelectItem>
-                </SelectContent>
-              </Select>
+              <PromptSelect onPromptSelected={handlePromptSelect} />
             </div>
 
             <div className="space-y-4">
@@ -92,7 +89,8 @@ export function App() {
               <Label>Temperature</Label>
               <Slider min={0} max={1} step={0.1} />
               <span className="block text-xs text-muted-foreground italic">
-                Highers values mean more creative results with a higher chance of mistakes.
+                Highers values mean more creative results with a higher chance
+                of mistakes.
               </span>
             </div>
 
